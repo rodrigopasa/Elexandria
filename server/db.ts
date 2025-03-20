@@ -63,7 +63,7 @@ async function initializePool(): Promise<Pool> {
 
       const newPool = new Pool({
         connectionString: process.env.DATABASE_URL,
-        ssl: { rejectUnauthorized: false },
+        ssl: { rejectUnauthorized: true },
         connectionTimeoutMillis: CONNECTION_TIMEOUT,
         maxUses: 5000,
         idleTimeoutMillis: 10000,
