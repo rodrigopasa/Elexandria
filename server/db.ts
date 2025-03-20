@@ -15,14 +15,6 @@ neonConfig.wsProxy = (url) => {
   return url;
 };
 
-// SSL configuration with proper error handling
-try {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-  console.log('SSL verification disabled for development');
-} catch (error: any) {
-  console.error('Error configuring SSL:', error.message);
-}
-
 // Environment-based configuration with production-optimized defaults
 const MAX_RETRIES = parseInt(process.env.DB_MAX_RETRIES || '5');
 const INITIAL_BACKOFF = parseInt(process.env.DB_INITIAL_BACKOFF || '500');
@@ -63,7 +55,7 @@ async function initializePool(): Promise<Pool> {
 
       const newPool = new Pool({
         connectionString: process.env.DATABASE_URL,
-        ssl: { rejectUnauthorized: true },
+        ssl: { rejectUnauthorized: true },  // Enabling SSL without disabling certificate verification
         connectionTimeoutMillis: CONNECTION_TIMEOUT,
         maxUses: 5000,
         idleTimeoutMillis: 10000,
