@@ -14,9 +14,6 @@ cmd = 'npx tsx server/initDb.ts && npm run start'
 PORT = '5000'
 HOST = '0.0.0.0'
 NODE_ENV = 'production'
-NODE_TLS_REJECT_UNAUTHORIZED = '0'
-DATABASE_USE_SSL = "false"
-DATABASE_REJECT_UNAUTHORIZED = "false"
 [nixpacks]
 plan_path = "/app"
 
